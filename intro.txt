@@ -1,0 +1,58 @@
+from random import *
+print('WELCOME TO THE RUMMY GAME!')
+def intro():
+    while True:
+        x = input("Are you ready to begin?(Y/N): ")
+        if x.isalpha():
+            if x.upper() == "Y":
+                break
+            elif x.upper() == "N":
+                print("Take your time...")
+            else:
+                print("Enter either Y or N!")
+        else:
+            print("Enter either Y or N!")
+    while True:
+        y = input("Heads or tails(H/T): ")
+        ht = ['H','T']
+        if y.isalpha():
+            if y.upper() == "H" or y.upper() == "T":
+                c = choice(ht)
+                if y == c:
+                    print(f"The coin landed on {c}")
+                    print("You go first!")
+                    return 1
+                else:
+                    print(f"The coin landed on {c}")
+                    print("You go second...")
+                    return 2
+            else:
+                print("Enter either H or T")
+        else:
+            print("Enter either H or T")
+turn = intro()
+
+card_type = ('♠', '♦', '♥', '♣')
+card_numbers = ('A','2','3','4','5','6','7','8','9','10','J','Q','K')
+cards = []
+for x in card_numbers:
+    for y in card_type:
+        cards += [(x,y)]
+user_list = []
+comp_list = []
+for num in range(10):
+    c = choice(cards)
+    user_list += (c,)
+    cards.remove(c)
+    d = choice(cards)
+    comp_list += (d,)
+    cards.remove(d)
+def design(num,type):
+    return f'┌─────────┐\n│{num}        │\n│         │\n│    {type}    │\n│         │\n│        {num}│\n└─────────┘\n'
+u = []
+new = ''
+print('Your cards are:')
+for t in user_list:
+    u += list(map(design,t[0],t[1]))
+u1 = new.join(u)
+print(u1)
