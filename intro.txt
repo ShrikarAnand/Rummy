@@ -56,3 +56,22 @@ for t in user_list:
     u += list(map(design,t[0],t[1]))
 u1 = new.join(u)
 print(u1)
+open=choice(cards)
+cards.remove(open)
+print("The Open Card Is:")
+open_card=f'┌─────────┐\n│{open[0]}        │\n│         │\n│    {open[1]}    │\n│         │\n│        {open[0]}│\n└─────────┘\n'
+print(open_card)
+while True:
+    x1=input("Would you like to use this card ")
+    if x1 in "YESyes":
+        user_list.append(open_card)
+        print(f"{open_card} has been added to your hand")
+        break
+    elif x1 in "NOno":
+        randcard=choice(cards)
+        cards.remove(randcard)
+        print(f'┌─────────┐\n│{randcard[0]}        │\n│         │\n│    {randcard[1]}    │\n│         │\n│        {randcard[0]}│\n└─────────┘\n', 'has been added to your hand')
+        break
+    else:
+        print("You can only use this card or draw a random card from the deck")
+
