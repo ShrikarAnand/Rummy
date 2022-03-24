@@ -48,7 +48,10 @@ for num in range(10):
     comp_list += (d,)
     cards.remove(d)
 def design(num,type):
-    return f'┌─────────┐\n│{num}        │\n│         │\n│    {type}    │\n│         │\n│        {num}│\n└─────────┘\n'
+    if len(num) == 1:
+        return f'┌─────────┐\n│{num}        │\n│         │\n│    {type}    │\n│         │\n│        {num}│\n└─────────┘\n'
+    else:
+        return f'┌─────────┐\n│{num}       │\n│         │\n│    {type}    │\n│         │\n│       {num}│\n└─────────┘\n'
 u = []
 new = ''
 print('Your cards are:')
