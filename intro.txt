@@ -35,6 +35,7 @@ turn = intro()
 
 card_type = ('♠', '♦', '♥', '♣')
 card_numbers = ('A','2','3','4','5','6','7','8','9','10','J','Q','K')
+card_dict={"spade":'♠',"heart":'♥',"diamond":'♦',"club":'♣'}
 cards = []
 for x in card_numbers:
     for y in card_type:
@@ -93,3 +94,36 @@ def open_card(num,type):
         return f'┌─────────┐\n│{num} . . .│\n│. . . . .│\n│. . {type} . .│\n│. . . . .│\n│. . . {num}│\n└─────────┘\n'
 print("Open card: ")
 print(''.join(map(open_card,ch[0],ch[1])))
+def choice1():
+    randcard=choice(cards)
+    countset=0
+    if turn==1:      
+        achoice="a"
+        while achoice not in ['Y','N']:
+            achoice=input("do you want to use this card? (Y/N) If not you will draw a random card from the deck: ")
+            if choice not in ['Y','N']:
+                print("you can only use this card or draw from the deck ")
+        if achoice=='Y':
+            print(''.join(map(open_card,ch[0],ch[1])),"has been added to your hand")
+            user_list.append(open_card)
+        else:
+            print(''.join(map(open_card,randcard[0],randcard[1])),"has been added to your hand")
+            user_list.append(randcard)
+        print("\n"*100)
+        print("Your cards are: ")
+        print('\n'.join(map('  '.join, zip(*(design(c[0],c[1]) for c in user_list)))))
+        
+       
+    elif turn==2:
+        for compcard in comp_list:
+            if compcard[1]==ch[1]:
+                countset+=1
+        if countset>2:
+            comp_list.append(open_card)
+            print(''.join(map(open_card,ch[0],ch[1])),"has been added to computer's hand")
+        else:
+            comp_list.append(randcard)
+            print(''.join(map(open_card,randcard[0],randcard[1])),"has been added to computer's hand")
+        
+        
+choice2=choice1()
