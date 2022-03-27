@@ -32,9 +32,17 @@ def intro():
         else:
             print("Enter either H or T")
 turn = intro()
-
-card_type = ('♠', '♦', '♥', '♣')
-card_numbers = ('A','2','3','4','5','6','7','8','9','10','J','Q','K')
+club="club"
+spade="spade"
+heart="heart"
+diamond="diamond"
+J="J"
+A="A"
+K="K"
+Q="Q"
+card_type = ('spade', 'diamond', 'heart', 'club')
+card_numbers = (A,'2','3','4','5','6','7','8','9','10',J,Q,K)
+card_dict={"spade":'♠',"heart":'♥',"diamond":'♦',"club":'♣',"s":'♠',"h":'♥',"d":'♦',"c":'♣','♠':'♠','♥':'♥','♦':'♦','♣':'♣'}
 cards = []
 for x in card_numbers:
     for y in card_type:
@@ -71,13 +79,13 @@ def design(num,type):
         x = ("│. . . .", f"{num[:]}│")
         pcarddisplay[5] = "".join(x)
 
-    if type == '♦':
+    if type == 'diamond':
         pcarddisplay[3] = "│. . ♦ . .│"
-    if type == '♣':
+    if type == 'club':
         pcarddisplay[3] = "│. . ♣ . .│"
-    if type == '♥':
+    if type == 'heart':
         pcarddisplay[3] = "│. . ♥ . .│"
-    if type == '♠':
+    if type == 'spade':
         pcarddisplay[3] = "│. . ♠ . .│"
 
     return pcarddisplay
@@ -88,8 +96,53 @@ ch = choice(cards)
 cards.remove(ch)
 def open_card(num,type):
     if len(num) == 1:
-        return f'┌─────────┐\n│{num} . . . .│\n│. . . . .│\n│. . {type} . .│\n│. . . . .│\n│. . . . {num}│\n└─────────┘\n'
+        return f'┌─────────┐\n│{num} . . . .│\n│. . . . .│\n│. . {card_dict[type]} . .│\n│. . . . .│\n│. . . . {num}│\n└─────────┘\n'
     else:
-        return f'┌─────────┐\n│{num} . . .│\n│. . . . .│\n│. . {type} . .│\n│. . . . .│\n│. . . {num}│\n└─────────┘\n'
+        return f'┌─────────┐\n│{num} . . .│\n│. . . . .│\n│. . {card_dict[type]} . .│\n│. . . . .│\n│. . . {num}│\n└─────────┘\n'
 print("Open card: ")
 print(''.join(map(open_card,ch[0],ch[1])))
+def choice1():
+    randcard=choice(cards)
+    countset=0
+    if turn==1:      
+        achoice="a"
+        while achoice not in ['Y','N']:
+            achoice=input("do you want to use this card? (Y/N) If not you will draw a random card from the deck: ")
+            if choice not in ['Y','N']:
+                print("you can only use this card or draw from the deck ")
+        if achoice=='Y':
+            print(''.join(map(open_card,ch[0],ch[1])),"has been added to your hand")
+            user_list.append(open_card)
+        else:
+            print(''.join(map(open_card,randcard[0],card_dict[randcard[1]])),"has been added to your hand")
+            user_list.append(randcard)
+        print("\n"*100)
+        print("Your cards are: ")
+        print('\n'.join(map('  '.join, zip(*(design(z[0],z[1]) for z in user_list)))))
+        discard="a"
+        while discard not in user_list:
+            discard=eval(input("enter what card you want to discard (card,suit): "))
+            if discard not in user_list:
+                print("only enter a card that you have")
+        downcard=user_list.remove(discard)
+        print(''.join(map(open_card,discard[0],discard[1])),"has been discarded")
+            
+
+        
+        
+       
+    elif turn==2:
+        for compcard in comp_list:
+            if compcard[1]==ch[1]:
+                countset+=1
+        if countset>2:
+            comp_list.append(open_card)
+            print(''.join(map(open_card,ch[0],ch[1])),"has been added to computer's hand")
+        else:
+            comp_list.append(randcard)
+            print(''.join(map(open_card,randcard[0],randcard[1])),"has been added to computer's hand")
+        
+        
+choice2=choice1()
+        
+    
