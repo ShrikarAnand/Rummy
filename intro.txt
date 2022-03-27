@@ -1,5 +1,6 @@
 from random import *
 print('WELCOME TO THE RUMMY GAME!')
+
 def intro():
     while True:
         x = input("Are you ready to begin?(Y/N): ")
@@ -18,7 +19,7 @@ def intro():
         if y.isalpha():
             if y.upper() == "H" or y.upper() == "T":
                 c = choice(ht)
-                if y == c:
+                if y.upper() == c:
                     print(f"The coin landed on {c}")
                     print("You go first!")
                     return 1
@@ -47,15 +48,48 @@ for num in range(10):
     d = choice(cards)
     comp_list += (d,)
     cards.remove(d)
+
+u1 = []
 def design(num,type):
+    pcarddisplay = []
+    pcarddisplay.append("┌─────────┐")
+    pcarddisplay.append("│{}{}. . .│")
+    pcarddisplay.append("│. . . . .│")
+    pcarddisplay.append("│. . {}. .│")
+    pcarddisplay.append("│. . . . .│")
+    pcarddisplay.append("│. . .{}{}│")
+    pcarddisplay.append("└─────────┘")
+
     if len(num) == 1:
-        return f'┌─────────┐\n│{num}        │\n│         │\n│    {type}    │\n│         │\n│        {num}│\n└─────────┘\n'
+        x = (f"│{num[:1]}", " . . . .│")
+        pcarddisplay[1] = "".join(x)
+        x = ("│. . . . ", f"{num[:1]}│")
+        pcarddisplay[5] = "".join(x)
     else:
-        return f'┌─────────┐\n│{num}       │\n│         │\n│    {type}    │\n│         │\n│       {num}│\n└─────────┘\n'
-u = []
-new = ''
-print('Your cards are:')
-for t in user_list:
-    u += list(map(design,t[0],t[1]))
-u1 = new.join(u)
-print(u1)
+        x = (f"│{num[:]}", ". . . .│")
+        pcarddisplay[1] = "".join(x)
+        x = ("│. . . .", f"{num[:]}│")
+        pcarddisplay[5] = "".join(x)
+
+    if type == '♦':
+        pcarddisplay[3] = "│. . ♦ . .│"
+    if type == '♣':
+        pcarddisplay[3] = "│. . ♣ . .│"
+    if type == '♥':
+        pcarddisplay[3] = "│. . ♥ . .│"
+    if type == '♠':
+        pcarddisplay[3] = "│. . ♠ . .│"
+
+    return pcarddisplay
+print("Your cards are: ")
+print('\n'.join(map('  '.join, zip(*(design(c[0],c[1]) for c in user_list)))))
+
+ch = choice(cards)
+cards.remove(ch)
+def open_card(num,type):
+    if len(num) == 1:
+        return f'┌─────────┐\n│{num} . . . .│\n│. . . . .│\n│. . {type} . .│\n│. . . . .│\n│. . . . {num}│\n└─────────┘\n'
+    else:
+        return f'┌─────────┐\n│{num} . . .│\n│. . . . .│\n│. . {type} . .│\n│. . . . .│\n│. . . {num}│\n└─────────┘\n'
+print("Open card: ")
+print(''.join(map(open_card,ch[0],ch[1])))
