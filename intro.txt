@@ -92,4 +92,4 @@ def open_card(num,type):
     else:
         return f'┌─────────┐\n│{num} . . .│\n│. . . . .│\n│. . {type} . .│\n│. . . . .│\n│. . . {num}│\n└─────────┘\n'
 print("Open card: ")
-print(''.join(map(open_card,ch[0],ch[1])))
+print(''.join(open_card(ch[0],ch[1])))
