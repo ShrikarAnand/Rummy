@@ -1,0 +1,194 @@
+class comp_sort():
+    def __init__(self,rsort):
+        self.rsort = rsort
+    def type_sort(self):
+        l1 = []
+        l2 = []
+        l3 = []
+        l4 = []
+        for t in self.rsort:
+            if t[1] == '♠':
+                l1.insert(0,t)
+        for t in self.rsort:
+            if t[1] == '♦':
+                l2.insert(0,t)
+        for t in self.rsort:
+            if t[1] == '♥':
+                l3.insert(0,t)
+        for t in self.rsort:
+            if t[1] == '♣':
+                l4.insert(0,t)
+        order = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12,
+                 'K': 13}
+        for t in l1:
+            for i in range(0,l1.index(t)):
+                if order[t[0]] < order[l1[i][0]]:
+                    l1.pop(l1.index(t))
+                    l1.insert(i,t)
+                if len(l1) >= 4:
+                    if order[t[0]] < order[l1[i-1][0]] and order[t[0]] < order[l1[i+1][0]]:
+                        l1.pop(l1.index(t))
+                        l1.insert(i-1,t)
+                    if len(l1) == 4:
+                        if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]]:
+                            break
+                    elif len(l1) == 5:
+                        if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]] and order[l1[3][0]] < order[l1[4][0]]:
+                            break
+                    elif len(l1) == 6:
+                        if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]] and order[l1[3][0]] < order[l1[4][0]]  and order[l1[4][0]] < order[l1[5][0]]:
+                            break
+                    elif len(l1) == 7:
+                        if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]] and order[l1[3][0]] < order[l1[4][0]]  and order[l1[4][0]] < order[l1[5][0]] and order[l1[5][0]] < order[l1[6][0]]:
+                            break
+                    elif len(l1) == 8:
+                        if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]] and order[l1[3][0]] < order[l1[4][0]]  and order[l1[4][0]] < order[l1[5][0]] and order[l1[5][0]] < order[l1[6][0]] and order[l1[6][0]] < order[l1[7][0]]:
+                            break
+                    elif len(l1) == 9:
+                        if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]] and order[l1[3][0]] < order[l1[4][0]]  and order[l1[4][0]] < order[l1[5][0]] and order[l1[5][0]] < order[l1[6][0]] and order[l1[6][0]] < order[l1[7][0]] and order[l1[7][0]] < order[l1[8][0]]:
+                            break
+                    elif len(l1) == 10:
+                        if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]] and order[l1[3][0]] < order[l1[4][0]]  and order[l1[4][0]] < order[l1[5][0]] and order[l1[5][0]] < order[l1[6][0]] and order[l1[6][0]] < order[l1[7][0]] and order[l1[7][0]] < order[l1[8][0]] and order[l1[8][0]] < order[l1[9][0]]:
+                            break
+        for t in l2:
+            for i in range(0,l2.index(t)):
+                if order[t[0]] < order[l2[i][0]]:
+                    l2.pop(l2.index(t))
+                    l2.insert(i,t)
+                if len(l2) >= 4:
+                    if order[t[0]] < order[l2[i-1][0]] and order[t[0]] < order[l2[i+1][0]]:
+                        l2.pop(l2.index(t))
+                        l2.insert(i-1,t)
+                    if len(l2) == 4:
+                        if order[l2[0][0]] < order[l2[1][0]] and order[l2[1][0]] < order[l2[2][0]] and order[l2[2][0]] < \
+                                order[l2[3][0]]:
+                            break
+                    elif len(l2) == 5:
+                        if order[l2[0][0]] < order[l2[1][0]] and order[l2[1][0]] < order[l2[2][0]] and order[l2[2][0]] < \
+                                order[l2[3][0]] and order[l2[3][0]] < order[l2[4][0]]:
+                            break
+                    elif len(l2) == 6:
+                        if order[l2[0][0]] < order[l2[1][0]] and order[l2[1][0]] < order[l2[2][0]] and order[l2[2][0]] < \
+                                order[l2[3][0]] and order[l2[3][0]] < order[l2[4][0]] and order[l2[4][0]] < order[
+                            l2[5][0]]:
+                            break
+                    elif len(l2) == 7:
+                        if order[l2[0][0]] < order[l2[1][0]] and order[l2[1][0]] < order[l2[2][0]] and order[l2[2][0]] < \
+                                order[l2[3][0]] and order[l2[3][0]] < order[l2[4][0]] and order[l2[4][0]] < order[
+                            l2[5][0]] and order[l2[5][0]] < order[l2[6][0]]:
+                            break
+                    elif len(l2) == 8:
+                        if order[l2[0][0]] < order[l2[1][0]] and order[l2[1][0]] < order[l2[2][0]] and order[l2[2][0]] < \
+                                order[l2[3][0]] and order[l2[3][0]] < order[l2[4][0]] and order[l2[4][0]] < order[
+                            l2[5][0]] and order[l2[5][0]] < order[l2[6][0]] and order[l2[6][0]] < order[l2[7][0]]:
+                            break
+                    elif len(l2) == 9:
+                        if order[l2[0][0]] < order[l2[1][0]] and order[l2[1][0]] < order[l2[2][0]] and order[l2[2][0]] < \
+                                order[l2[3][0]] and order[l2[3][0]] < order[l2[4][0]] and order[l2[4][0]] < order[
+                            l2[5][0]] and order[l2[5][0]] < order[l2[6][0]] and order[l2[6][0]] < order[l2[7][0]] and \
+                                order[l2[7][0]] < order[l2[8][0]]:
+                            break
+                    elif len(l2) == 10:
+                        if order[l2[0][0]] < order[l2[1][0]] and order[l2[1][0]] < order[l2[2][0]] and order[l2[2][0]] < \
+                                order[l2[3][0]] and order[l2[3][0]] < order[l2[4][0]] and order[l2[4][0]] < order[
+                            l2[5][0]] and order[l2[5][0]] < order[l2[6][0]] and order[l2[6][0]] < order[l2[7][0]] and \
+                                order[l2[7][0]] < order[l2[8][0]] and order[l2[8][0]] < order[l2[9][0]]:
+                            break
+        for t in l3:
+            for i in range(0,l3.index(t)):
+                if order[t[0]] < order[l3[i][0]]:
+                    l3.pop(l3.index(t))
+                    l3.insert(i,t)
+                if len(l3) >= 4:
+                    if order[t[0]] < order[l3[i-1][0]] and order[t[0]] < order[l3[i+1][0]]:
+                        l3.pop(l3.index(t))
+                        l3.insert(i-1,t)
+                    if len(l3) == 4:
+                        if order[l3[0][0]] < order[l3[1][0]] and order[l3[1][0]] < order[l3[2][0]] and order[l3[2][0]] < \
+                                order[l3[3][0]]:
+                            break
+                    elif len(l3) == 5:
+                        if order[l3[0][0]] < order[l3[1][0]] and order[l3[1][0]] < order[l3[2][0]] and order[l3[2][0]] < \
+                                order[l3[3][0]] and order[l3[3][0]] < order[l3[4][0]]:
+                            break
+                    elif len(l3) == 6:
+                        if order[l3[0][0]] < order[l3[1][0]] and order[l3[1][0]] < order[l3[2][0]] and order[l3[2][0]] < \
+                                order[l3[3][0]] and order[l3[3][0]] < order[l3[4][0]] and order[l3[4][0]] < order[
+                            l3[5][0]]:
+                            break
+                    elif len(l3) == 7:
+                        if order[l3[0][0]] < order[l3[1][0]] and order[l3[1][0]] < order[l3[2][0]] and order[l3[2][0]] < \
+                                order[l3[3][0]] and order[l3[3][0]] < order[l3[4][0]] and order[l3[4][0]] < order[
+                            l3[5][0]] and order[l3[5][0]] < order[l3[6][0]]:
+                            break
+                    elif len(l3) == 8:
+                        if order[l3[0][0]] < order[l3[1][0]] and order[l3[1][0]] < order[l3[2][0]] and order[l3[2][0]] < \
+                                order[l3[3][0]] and order[l3[3][0]] < order[l3[4][0]] and order[l3[4][0]] < order[
+                            l3[5][0]] and order[l3[5][0]] < order[l3[6][0]] and order[l3[6][0]] < order[l3[7][0]]:
+                            break
+                    elif len(l3) == 9:
+                        if order[l3[0][0]] < order[l3[1][0]] and order[l3[1][0]] < order[l3[2][0]] and order[l3[2][0]] < \
+                                order[l3[3][0]] and order[l3[3][0]] < order[l3[4][0]] and order[l3[4][0]] < order[
+                            l3[5][0]] and order[l3[5][0]] < order[l3[6][0]] and order[l3[6][0]] < order[l3[7][0]] and \
+                                order[l3[7][0]] < order[l3[8][0]]:
+                            break
+                    elif len(l3) == 10:
+                        if order[l3[0][0]] < order[l3[1][0]] and order[l3[1][0]] < order[l3[2][0]] and order[l3[2][0]] < \
+                                order[l3[3][0]] and order[l3[3][0]] < order[l3[4][0]] and order[l3[4][0]] < order[
+                            l3[5][0]] and order[l3[5][0]] < order[l3[6][0]] and order[l3[6][0]] < order[l3[7][0]] and \
+                                order[l3[7][0]] < order[l3[8][0]] and order[l3[8][0]] < order[l3[9][0]]:
+                            break
+        for t in l4:
+            for i in range(0,l4.index(t)):
+                if order[t[0]] < order[l4[i][0]]:
+                    l4.pop(l4.index(t))
+                    l4.insert(i,t)
+                    print(l4)
+                if len(l4) >= 4:
+                    if order[t[0]] < order[l4[i-1][0]] and order[t[0]] < order[l4[i+1][0]]:
+                        l4.pop(l4.index(t))
+                        l4.insert(i-1,t)
+                    if len(l4) == 4:
+                        if order[l4[0][0]] < order[l4[1][0]] and order[l4[1][0]] < order[l4[2][0]] and order[l4[2][0]] < \
+                                order[l4[3][0]]:
+                            break
+                    elif len(l4) == 5:
+                        if order[l4[0][0]] < order[l4[1][0]] and order[l4[1][0]] < order[l4[2][0]] and order[l4[2][0]] < \
+                                order[l4[3][0]] and order[l4[3][0]] < order[l4[4][0]]:
+                            break
+                    elif len(l4) == 6:
+                        if order[l4[0][0]] < order[l4[1][0]] and order[l4[1][0]] < order[l4[2][0]] and order[l4[2][0]] < \
+                                order[l4[3][0]] and order[l4[3][0]] < order[l4[4][0]] and order[l4[4][0]] < order[
+                            l4[5][0]]:
+                            break
+                    elif len(l4) == 7:
+                        if order[l4[0][0]] < order[l4[1][0]] and order[l4[1][0]] < order[l4[2][0]] and order[l4[2][0]] < \
+                                order[l4[3][0]] and order[l4[3][0]] < order[l4[4][0]] and order[l4[4][0]] < order[
+                            l4[5][0]] and order[l4[5][0]] < order[l4[6][0]]:
+                            break
+                    elif len(l4) == 8:
+                        if order[l4[0][0]] < order[l4[1][0]] and order[l4[1][0]] < order[l4[2][0]] and order[l4[2][0]] < \
+                                order[l4[3][0]] and order[l4[3][0]] < order[l4[4][0]] and order[l4[4][0]] < order[
+                            l4[5][0]] and order[l4[5][0]] < order[l4[6][0]] and order[l4[6][0]] < order[l4[7][0]]:
+                            break
+                    elif len(l4) == 9:
+                        if order[l4[0][0]] < order[l4[1][0]] and order[l4[1][0]] < order[l4[2][0]] and order[l4[2][0]] < \
+                                order[l4[3][0]] and order[l4[3][0]] < order[l4[4][0]] and order[l4[4][0]] < order[
+                            l4[5][0]] and order[l4[5][0]] < order[l4[6][0]] and order[l4[6][0]] < order[l4[7][0]] and \
+                                order[l4[7][0]] < order[l4[8][0]]:
+                            break
+                    elif len(l4) == 10:
+                        if order[l4[0][0]] < order[l4[1][0]] and order[l4[1][0]] < order[l4[2][0]] and order[l4[2][0]] < \
+                                order[l4[3][0]] and order[l4[3][0]] < order[l4[4][0]] and order[l4[4][0]] < order[
+                            l4[5][0]] and order[l4[5][0]] < order[l4[6][0]] and order[l4[6][0]] < order[l4[7][0]] and \
+                                order[l4[7][0]] < order[l4[8][0]] and order[l4[8][0]] < order[l4[9][0]]:
+                            break
+        final_list =[]
+        final_list += l1
+        final_list += l2
+        final_list += l3
+        final_list += l4
+        return final_list
+
+a = comp_sort([('K', '♠'), ('9', '♠'), ('9', '♥'), ('4', '♦'), ('K', '♣'), ('8', '♥'), ('7', '♠'), ('3', '♠'), ('5', '♥'), ('3', '♥')])
+print(a.type_sort())
