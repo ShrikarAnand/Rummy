@@ -53,6 +53,10 @@ class comp_sort():
                     elif len(l1) == 10:
                         if order[l1[0][0]] < order[l1[1][0]] and order[l1[1][0]] < order[l1[2][0]] and order[l1[2][0]] < order[l1[3][0]] and order[l1[3][0]] < order[l1[4][0]]  and order[l1[4][0]] < order[l1[5][0]] and order[l1[5][0]] < order[l1[6][0]] and order[l1[6][0]] < order[l1[7][0]] and order[l1[7][0]] < order[l1[8][0]] and order[l1[8][0]] < order[l1[9][0]]:
                             break
+        check_list_1 = [t[0] for t in l1]
+        if 'Q' in check_list_1 and 'K' in check_list_1 and 'A' in check_list_1 and ('2' not in check_list_1 or '3' not in check_list_1):
+            l1.pop(0)
+            l1.insert(len(l1),('A','♠'))
         for t in l2:
             for i in range(0,l2.index(t)):
                 if order[t[0]] < order[l2[i][0]]:
@@ -100,6 +104,11 @@ class comp_sort():
                             l2[5][0]] and order[l2[5][0]] < order[l2[6][0]] and order[l2[6][0]] < order[l2[7][0]] and \
                                 order[l2[7][0]] < order[l2[8][0]] and order[l2[8][0]] < order[l2[9][0]]:
                             break
+        check_list_2 = [t[0] for t in l2]
+        if 'Q' in check_list_2 and 'K' in check_list_2 and 'A' in check_list_2 and (
+                '2' not in check_list_2 or '3' not in check_list_2):
+            l2.pop(0)
+            l2.insert(len(l2), ('A', '♦'))
         for t in l3:
             for i in range(0,l3.index(t)):
                 if order[t[0]] < order[l3[i][0]]:
@@ -147,6 +156,11 @@ class comp_sort():
                             l3[5][0]] and order[l3[5][0]] < order[l3[6][0]] and order[l3[6][0]] < order[l3[7][0]] and \
                                 order[l3[7][0]] < order[l3[8][0]] and order[l3[8][0]] < order[l3[9][0]]:
                             break
+        check_list_3 = [t[0] for t in l3]
+        if 'Q' in check_list_3 and 'K' in check_list_3 and 'A' in check_list_3 and (
+                '2' not in check_list_3 or '3' not in check_list_3):
+            l3.pop(0)
+            l3.insert(len(l3), ('A', '♥'))
         for t in l4:
             for i in range(0,l4.index(t)):
                 if order[t[0]] < order[l4[i][0]]:
@@ -194,13 +208,14 @@ class comp_sort():
                             l4[5][0]] and order[l4[5][0]] < order[l4[6][0]] and order[l4[6][0]] < order[l4[7][0]] and \
                                 order[l4[7][0]] < order[l4[8][0]] and order[l4[8][0]] < order[l4[9][0]]:
                             break
+        check_list_4 = [t[0] for t in l4]
+        if 'Q' in check_list_4 and 'K' in check_list_4 and 'A' in check_list_4 and (
+                '2' not in check_list_4 or '3' not in check_list_4):
+            l4.pop(0)
+            l4.insert(len(l4), ('A', '♣'))
         final_list =[]
         final_list += l1
         final_list += l2
         final_list += l3
         final_list += l4
         return final_list
-
-a = comp_sort([('5', '♦'), ('J', '♦'), ('6', '♣'), ('J', '♠'), ('2', '♦'), ('A', '♥'), ('6', '♠'), ('Q', '♥'), ('K', '♥'), ('5', '♠')])
-print(a.type_sort())
-
