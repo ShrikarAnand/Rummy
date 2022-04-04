@@ -152,7 +152,6 @@ class comp_sort():
                 if order[t[0]] < order[l4[i][0]]:
                     l4.pop(l4.index(t))
                     l4.insert(i,t)
-                    print(l4)
                 if len(l4) >= 3:
                     if order[t[0]] < order[l4[i-1][0]] and order[t[0]] < order[l4[i+1][0]] and i-1 >= 0:
                         l4.pop(l4.index(t))
