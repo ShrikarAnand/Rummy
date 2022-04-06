@@ -219,3 +219,27 @@ class comp_sort():
         final_list += l3
         final_list += l4
         return final_list
+def set_count(playerlist):
+    cardlist=playerlist[::]
+    print(cardlist)
+    sets=0
+    s=[]
+    s1=[]
+    for card in cardslist:
+        for acard in cardslist:
+            for bcard in cardslist:
+                if card[0]==acard[0]==bcard[0] and card[1]!=acard[1]!=bcard[1]!=card[1]:
+                    cardslist.remove(card)
+                    cardslist.remove(bcard)
+                    cardslist.remove(acard)
+                    s.append(card)
+                    s.append(bcard)
+                    s.append(acard)
+    for x in s:
+        s1.append(x[0])
+    for x1 in s1:
+        if s1.count(x1)==3:
+            s1.remove(x1)
+            sets+=1
+    print(playerlist)
+    
