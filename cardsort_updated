@@ -219,3 +219,97 @@ class comp_sort():
         final_list += l3
         final_list += l4
         return final_list
+def set_count(playerlist):
+    order = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12,
+                 'K': 13}
+    cardslist=playerlist.copy()
+    cardslist1=comp_sort(playerlist)
+    cardsorted=cardslist1.type_sort()
+    sets=0
+    s=[]
+    s1=[]
+    for card in cardslist:
+        for acard in cardslist:
+            for bcard in cardslist:
+                if card[0]==acard[0]==bcard[0] and card[1]!=acard[1]!=bcard[1]!=card[1]:
+                    cardslist.remove(card)
+                    cardslist.remove(bcard)
+                    cardslist.remove(acard)
+                    s.append(card)
+                    s.append(bcard)
+                    s.append(acard)
+    for x in s:
+        s1.append(x[0])
+    for x1 in s1:
+        if s1.count(x1)==3:
+            s1.remove(x1)
+            sets+=1
+    L1=[]
+    L2=[]
+    L3=[]
+    L4=[]
+    ls=[]
+    for x in cardsorted:
+        if x[1]=='♠':
+            L1.append(x)
+        elif x[1]=='♦':
+            L2.append(x)
+        elif x[1]=='♥':
+            L3.append(x)
+        elif x[1]=='♣':
+            L4.append(x)
+    for x in L1:
+        for y in L1:
+            for z in L1:
+                if order[x[0]]==order[y[0]]-1==order[z[0]]-2:
+                    ls.append(x)
+                    ls.append(y)
+                    ls.append(z)
+                    L1.remove(x)
+                    L1.remove(y)
+                    L1.remove(z)
+    for x in L2:
+        for y in L2:
+            for z in L2:
+                if order[x[0]]==order[y[0]]-1==order[z[0]]-2:
+                    ls.append(x)
+                    ls.append(y)
+                    ls.append(z)
+                    L2.remove(x)
+                    L2.remove(y)
+                    L2.remove(z)
+
+
+    for x in L1:
+        for y in L1:
+            for z in L1:
+                if order[x[0]]==order[y[0]]-1==order[z[0]]-2:
+                    ls.append(x)
+                    ls.append(y)
+                    ls.append(z)
+                    L1.remove(x)
+                    L1.remove(y)
+                    L1.remove(z)    
+
+    for x in L1:
+        for y in L1:
+            for z in L1:
+                if order[x[0]]==order[y[0]]-1==order[z[0]]-2:
+                    ls.append(x)
+                    ls.append(y)
+                    ls.append(z)
+                    L1.remove(x)
+                    L1.remove(y)
+                    L1.remove(z)
+
+    if len(ls)==3:
+        sets+=1
+    elif len(ls)==6:
+        sets+=2
+    elif len(ls)==9:
+        sets+=3
+    elif len(ls)==12:
+        sets+=4
+    elif len(ls)==15:
+        sets+=5
+    return sets
