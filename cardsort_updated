@@ -221,7 +221,7 @@ class comp_sort():
         return final_list
 def set_count(playerlist):
     order = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12,
-                 'K': 13}
+                 'K': 13,"#":0}
     cardslist=playerlist.copy()
     cardslist1=comp_sort(playerlist)
     cardsorted=cardslist1.type_sort()
@@ -258,6 +258,7 @@ def set_count(playerlist):
             L3.append(x)
         elif x[1]=='♣':
             L4.append(x)
+    h="#"
     for x in L1:
         for y in L1:
             for z in L1:
@@ -278,30 +279,30 @@ def set_count(playerlist):
                     L2.remove(x)
                     L2.remove(y)
                     L2.remove(z)
+    
 
-
-    for x in L1:
-        for y in L1:
-            for z in L1:
+    for x in L3:
+        for y in L3:
+            for z in L3:
                 if order[x[0]]==order[y[0]]-1==order[z[0]]-2:
                     ls.append(x)
                     ls.append(y)
                     ls.append(z)
-                    L1.remove(x)
-                    L1.remove(y)
-                    L1.remove(z)    
-
-    for x in L1:
-        for y in L1:
-            for z in L1:
+                    L3.remove(x)
+                    L3.remove(y)
+                    L3.remove(z)    
+        
+    for x in L4:
+        for y in L4:
+            for z in L4:
                 if order[x[0]]==order[y[0]]-1==order[z[0]]-2:
                     ls.append(x)
                     ls.append(y)
                     ls.append(z)
-                    L1.remove(x)
-                    L1.remove(y)
-                    L1.remove(z)
-
+                    L4.remove(x)
+                    L4.remove(y)
+                    L4.remove(z)
+   
     if len(ls)==3:
         sets+=1
     elif len(ls)==6:
@@ -312,4 +313,8 @@ def set_count(playerlist):
         sets+=4
     elif len(ls)==15:
         sets+=5
+    print(ls)
+    print(s)
     return sets
+    
+        
